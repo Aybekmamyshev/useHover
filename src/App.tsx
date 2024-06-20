@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useHover} from "./useHover";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    const {ref, hovered} = useHover()
+    return (
+        <div
+            style={
+                {
+                    margin: '10px',
+                    border: '5px solid black',
+                    padding: '10px',
+                    width: '100px',
+                    height: '100px',
+                    background: `${hovered ? 'red' : ""}`,
+                    color: `${hovered ? 'white' : ""}`
+                }
+            }
+            ref={ref}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+            {hovered ? 'На меня навели мышку' : 'Наведи мышкой на меня'}
+        </div>
+    );
 }
 
 export default App;
